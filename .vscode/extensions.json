@@ -8,9 +8,6 @@
     "yandeu.five-server",
     "redhat.vscode-yaml",
     "redhat.vscode-openshift-connector",
-    "redhat.fabric8-analytics",
-    "redhat.vscode-tekton-pipelines",
-    "esbenp.prettier-vscode",
     "laurenttreguier.vscode-simple-icons"
   ]
 }
