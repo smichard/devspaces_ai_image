@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": [".devfile.yaml"],
+      "matchStrings": [
+        "image: quay\\.io/michard/devspaces_base_image:(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "quay.io/michard/devspaces_base_image",
+      "datasourceTemplate": "docker"
+    }
   ]
 }
