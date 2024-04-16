@@ -6,7 +6,7 @@ attributes:
 components:
 - name: udi
   container:
-    image: quay.io/michard/devspaces_base_image:0.1.11
+    image: quay.io/michard/devspaces_base_image:0.1.17
     #image: quay.io/devfile/universal-developer-image:ubi8-latest
     memoryLimit: 4Gi
     memoryRequest: 2Gi
