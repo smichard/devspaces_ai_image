@@ -6,7 +6,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [".devfile.yaml"],
+      "fileMatch": ["devfile.yaml"],
       "matchStrings": [
         "image: quay\\.io/michard/devspaces_base_image:(?<currentValue>\\d+\\.\\d+\\.\\d+)"
       ],
