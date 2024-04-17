@@ -3,6 +3,8 @@ metadata:
   name: ollama-workspace
 attributes:
   controller.devfile.io/storage-type: ephemeral
+labels:
+  app: ollama
 components:
 - name: udi
   container:
