@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+  namespace: stephan-devspaces
+spec:
+  selector:
+    controller.devfile.io/devworkspace_name: ollama-workspace
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 11434

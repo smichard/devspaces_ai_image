@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: webui-route
+  namespace: stephan-devspaces
+  labels: {}
+spec:
+  to:
+    kind: Service
+    name: open-webui-service
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+    destinationCACertificate: ''
+  host: ai.apps.cluster-t8wmm.sandbox1801.opentlc.com
+  path: /
+  port:
+    targetPort: http

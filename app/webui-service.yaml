@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-webui-service
+  namespace: stephan-devspaces
+spec:
+  selector:
+    app: open-webui
+  ports:
+    - protocol: TCP
+      name: http
+      port: 8080
+      targetPort: 8080
