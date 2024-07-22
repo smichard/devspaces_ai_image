@@ -29,6 +29,10 @@ spec:
         env:
         - name: OLLAMA_BASE_URL
           value: 'http://ollama-service.stephan-devspaces.svc.cluster.local'
+        - name: AUTOMATIC1111_BASE_URL
+          value: 'http://stable-diffusion-service.stephan-devspaces.svc.cluster.local:7860/'
+        - name: ENABLE_IMAGE_GENERATION
+          value: 'True'
         tty: true
         volumeMounts:
         - name: webui-volume
