@@ -1,0 +1,51 @@
+app/stable-diffusion-pvc.yamlkind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: stable-diffusion-deployment
+  namespace: smichard-devspaces
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stable-diffusion
+  template:
+    metadata:
+      labels:
+        app: stable-diffusion
+    spec:
+      containers:
+        - name: stable-diffusion
+          image: 'quay.io/castawayegr/stable-diffusion-webui:v1.9.4'
+          imagePullPolicy: IfNotPresent
+          args:
+            - '--xformers'
+            - '--medvram'
+          resources:
+            requests:
+              memory: 500Mi
+            limits:
+              memory: 6Gi
+              nvidia.com/gpu: '1'
+          ports:
+            - containerPort: 7860
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            runAsNonRoot: true
+            capabilities:
+              drop:
+              - ALL
+          volumeMounts:
+            - name: sd-data
+              mountPath: /data/
+      volumes:
+        - name: sd-data
+          persistentVolumeClaim:
+            claimName: stable-diffusion-pvc
+      restartPolicy: Always
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule

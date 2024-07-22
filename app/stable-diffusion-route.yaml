@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: stable-diffusion-route
+  namespace: stephan-devspaces
+spec:
+  to:
+    kind: Service
+    name: stable-diffusion-service
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+    destinationCACertificate: ''
+  host: sd.apps.cluster-pn6k9.sandbox2788.opentlc.com
+  path: /
+  port:
+    targetPort: http

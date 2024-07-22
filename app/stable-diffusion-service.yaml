@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: stable-diffusion-service
+  namespace: stephan-devspaces
+spec:
+  selector:
+    app: stable-diffusion
+  ports:
+    - name: http
+      protocol: TCP
+      port: 7860
+      targetPort: 7860
