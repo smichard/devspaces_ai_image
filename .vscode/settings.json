@@ -1,4 +1,5 @@
 {
+  "window.menuBarVisibility": "visible",
   "editor.fontSize": 14,
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "terminal.integrated.fontSize": 14
