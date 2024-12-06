@@ -12,7 +12,7 @@ spec:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
     destinationCACertificate: ''
-  host: ai.apps.cluster-kw92k.kw92k.sandbox2659.opentlc.com
+  host: ai.apps.cluster-hk697.hk697.sandbox3298.opentlc.com
   path: /
   port:
     targetPort: http
