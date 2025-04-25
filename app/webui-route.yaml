@@ -12,7 +12,7 @@ spec:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
     destinationCACertificate: ''
-  host: ai.apps.cluster-5js5t.5js5t.sandbox205.opentlc.com
+  host: ai.apps.cluster-jz5fb.jz5fb.sandbox1410.opentlc.com
   path: /
   port:
     targetPort: http
