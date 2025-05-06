@@ -2,10 +2,13 @@ schemaVersion: 2.2.0
 metadata:
   name: ollama-workspace
   label: ollama
+attributes:
+  controller.devfile.io/storage-type: persistent
 components:
 - name: ollama-storage
   volume:
     size: 20Gi
+    ephemeral: false
 - name: udi
   container:
     image: quay.io/michard/devspaces_base_image:0.1.25
