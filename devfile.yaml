@@ -2,9 +2,10 @@ schemaVersion: 2.2.0
 metadata:
   name: ollama-workspace
   label: ollama
-attributes:
-  controller.devfile.io/storage-type: ephemeral
 components:
+- name: ollama-storage
+  volume:
+    size: 20Gi
 - name: udi
   container:
     image: quay.io/michard/devspaces_base_image:0.1.25
@@ -28,8 +29,9 @@ components:
           nvidia.com/gpu: 1 # requesting 1 GPU
   container:
     image: docker.io/ollama/ollama:latest
-    mountSources: true
-    sourceMapping: /.ollama
+    volumeMounts:
+      - name: ollama-storage
+        path: /.ollama
 commands:
   - id: pullmodel
     exec:
