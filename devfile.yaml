@@ -2,8 +2,6 @@ schemaVersion: 2.2.0
 metadata:
   name: ollama-workspace
   label: ollama
-attributes:
-  controller.devfile.io/storage-type: persistent
 components:
 - name: ollama-storage
   volume:
@@ -32,9 +30,11 @@ components:
           nvidia.com/gpu: 1 # requesting 1 GPU
   container:
     image: docker.io/ollama/ollama:latest
-    volumeMounts:
-      - name: ollama-storage
-        path: /.ollama
+    mountSources: true
+    sourceMapping: /projects
+    env:
+      - name: OLLAMA_MODELS
+        value: "/projects/.ollama"
 commands:
   - id: pullmodel
     exec:
