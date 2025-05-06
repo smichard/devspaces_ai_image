@@ -2,13 +2,12 @@ schemaVersion: 2.2.0
 metadata:
   name: ollama-workspace
   label: ollama
+attributes:
+  controller.devfile.io/storage-type: ephemeral
 components:
-- name: ollama-storage
-  volume:
-    size: 20Gi
 - name: udi
   container:
-    image: quay.io/michard/devspaces_base_image:0.1.25
+    image: quay.io/michard/devspaces_base_image:0.1.20
     memoryLimit: 4Gi
     memoryRequest: 2Gi
     cpuLimit: 4000m
@@ -30,13 +29,7 @@ components:
   container:
     image: docker.io/ollama/ollama:latest
     mountSources: true
-    sourceMapping: /projects
-    env:
-      - name: OLLAMA_MODELS
-        value: "/ollama-storage"
-    volumeMounts:
-      - name: ollama-storage
-        path: /ollama-storage
+    sourceMapping: /.ollama
 commands:
   - id: pullmodel
     exec:
@@ -48,5 +41,5 @@ commands:
       commandLine: "mkdir /home/user/.continue && cp /projects/devspaces-ai-image/continue-config.json /home/user/.continue/config.json"
 events:
   postStart:
-#    - pullmodel
+    - pullmodel
     - copyconfig
