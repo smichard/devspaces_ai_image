@@ -6,7 +6,6 @@ components:
 - name: ollama-storage
   volume:
     size: 20Gi
-    ephemeral: false
 - name: udi
   container:
     image: quay.io/michard/devspaces_base_image:0.1.25
@@ -34,7 +33,10 @@ components:
     sourceMapping: /projects
     env:
       - name: OLLAMA_MODELS
-        value: "/projects/.ollama"
+        value: "/ollama-storage"
+    volumeMounts:
+      - name: ollama-storage
+        path: /ollama-storage
 commands:
   - id: pullmodel
     exec:
@@ -46,5 +48,5 @@ commands:
       commandLine: "mkdir /home/user/.continue && cp /projects/devspaces-ai-image/continue-config.json /home/user/.continue/config.json"
 events:
   postStart:
-    - pullmodel
+#    - pullmodel
     - copyconfig
