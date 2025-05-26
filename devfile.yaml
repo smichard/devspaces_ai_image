@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: ollama-workspace
+  name: code-assistant
   label: ollama
 attributes:
   controller.devfile.io/storage-type: ephemeral
@@ -35,11 +35,15 @@ commands:
     exec:
       component: ollama
       commandLine: "ollama pull codellama:13b"
+  - id: pullmodel2
+    exec:
+      component: ollama
+      commandLine: "ollama pull devstral:latest"
   - id: copyconfig
     exec:
       component: udi
       commandLine: "mkdir /home/user/.continue && cp /projects/devspaces-ai-image/continue-config.json /home/user/.continue/config.json"
 events:
   postStart:
-    - pullmodel
+    - pullmodel2
     - copyconfig
