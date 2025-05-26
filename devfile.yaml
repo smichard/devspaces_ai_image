@@ -34,10 +34,6 @@ commands:
   - id: pullmodel
     exec:
       component: ollama
-      commandLine: "ollama pull codellama:13b"
-  - id: pullmodel2
-    exec:
-      component: ollama
       commandLine: "ollama pull devstral:latest"
   - id: copyconfig
     exec:
@@ -45,5 +41,5 @@ commands:
       commandLine: "mkdir /home/user/.continue && cp /projects/devspaces-ai-image/continue-config.json /home/user/.continue/config.json"
 events:
   postStart:
-    - pullmodel2
+    - pullmodel
     - copyconfig
