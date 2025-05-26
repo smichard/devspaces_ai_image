@@ -1,12 +1,6 @@
 {
   "models": [
     {
-      "title": "On-prem CodeLlama-13b",
-      "model": "codellama:13b",
-      "apiBase": "http://localhost:11434",
-      "provider": "ollama"
-      },
-    {
       "title": "On-prem Devstral",
       "model": "devstral:latest",
       "apiBase": "http://localhost:11434",
