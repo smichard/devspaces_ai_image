@@ -24,8 +24,8 @@ spec:
             cpu: "500m"
             memory: "500Mi"
           limits:
-            cpu: "1000m"
-            memory: "1Gi"
+            cpu: "2000m"
+            memory: "2Gi"
         env:
         - name: OLLAMA_BASE_URL
           value: 'http://ollama-service.stephan-devspaces.svc.cluster.local'
