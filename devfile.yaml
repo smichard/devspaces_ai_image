@@ -37,4 +37,4 @@ commands:
       commandLine: "mkdir /home/user/.continue && cp /projects/devspaces-ai-image/continue-config.json /home/user/.continue/config.json"
 events:
   postStart:
-    - pullmodel
+    - copyconfig
