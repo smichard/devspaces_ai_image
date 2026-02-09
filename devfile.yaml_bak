@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: code-assistant
+  name: ollama-workspace
   label: ollama
 attributes:
   controller.devfile.io/storage-type: ephemeral
@@ -14,7 +14,7 @@ components:
     cpuRequest: 1000m
     mountSources: true
     sourceMapping: /projects
-- name: vllm
+- name: ollama
   attributes:
     container-overrides:
       resources:
@@ -27,10 +27,14 @@ components:
           memory: 8Gi
           nvidia.com/gpu: 1 # requesting 1 GPU
   container:
-    image: docker.io/vllm/vllm-openai:latest-cu130
+    image: docker.io/ollama/ollama:latest
     mountSources: true
-    sourceMapping: /.vllm
+    sourceMapping: /.ollama
 commands:
+  - id: pullmodel
+    exec:
+      component: ollama
+      commandLine: "ollama pull devstral:latest"
   - id: copyconfig
     exec:
       component: udi
@@ -38,3 +42,4 @@ commands:
 events:
   postStart:
     - pullmodel
+    - copyconfig
